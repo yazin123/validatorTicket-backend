@@ -1,0 +1,36 @@
+// routes/ticket.routes.js
+const express = require('express');
+const router = express.Router();
+const {
+  getTickets,
+  getMyTickets,
+  getTicket,
+  createTicket,
+  verifyTicket,
+  verifyEvent,
+  addEvents,
+  cancelTicket,
+  getTicketByQRCode
+} = require('../controllers/ticket.controller');
+const { protect, authorize } = require('../middleware/auth');
+
+// Protect all routes
+router.use(protect);
+
+// User routes
+router.get('/my-tickets', getMyTickets);
+router.post('/', createTicket);
+router.put('/:id/events', addEvents);
+
+// Staff/Admin routes
+router.post('/verify', authorize('staff', 'admin'), verifyTicket);
+router.post('/verify-event', authorize('staff', 'admin'), verifyEvent);
+router.post('/verify-qr', authorize('staff', 'admin'), getTicketByQRCode);
+
+// Admin only routes
+router.get('/', authorize('admin'), getTickets);
+router.get('/:id', getTicket);
+router.put('/:id/cancel', authorize('admin'), cancelTicket);
+
+module.exports = router;
+
