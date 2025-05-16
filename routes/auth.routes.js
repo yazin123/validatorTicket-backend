@@ -3,8 +3,13 @@ const express = require('express');
 const router = express.Router();
 const authController = require('../controllers/auth.controller');
 const { protect } = require('../middleware/auth');
+const passport = require('passport');
 
-// Public routes
+// Google authentication routes
+router.get('/google', authController.googleAuth);
+router.get('/google/callback', authController.googleCallback);
+
+// Keep existing routes
 router.post('/register', authController.register);
 router.post('/login', authController.login);
 router.post('/forgotpassword', authController.forgotPassword);
@@ -18,4 +23,3 @@ router.put('/updatedetails', protect, authController.updateDetails);
 router.put('/updatepassword', protect, authController.updatePassword);
 
 module.exports = router;
-

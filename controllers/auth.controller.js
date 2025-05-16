@@ -7,6 +7,89 @@ const mailService = require('../services/mail.service');
 const crypto = require('crypto');
 const { sendEmail } = require('../utils/sendEmail');
 
+const passport = require('passport');
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
+
+passport.use(
+  new GoogleStrategy(
+    {
+      clientID: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      callbackURL: `${process.env.API_URL}/api/v1/auth/google/callback`,
+      passReqToCallback: true,
+    },
+    async (req, accessToken, refreshToken, profile, done) => {
+      try {
+        // Check if user already exists
+        let user = await User.findOne({
+          email: profile.emails[0].value,
+        });
+
+        if (user) {
+          // Update user info if needed
+          user.lastLogin = Date.now();
+          await user.save();
+          return done(null, user);
+        } else {
+          // Create new user
+          user = await User.create({
+            name: profile.displayName,
+            email: profile.emails[0].value,
+            password: crypto.randomBytes(20).toString('hex'), // Generate random password
+            emailVerified: true, // Google emails are already verified
+            profileImage: profile.photos && profile.photos[0] ? profile.photos[0].value : 'default.jpg',
+          });
+          return done(null, user);
+        }
+      } catch (error) {
+        return done(error, false);
+      }
+    }
+  )
+);
+
+// Serialize and deserialize user for session management
+passport.serializeUser((user, done) => {
+  done(null, user.id);
+});
+
+passport.deserializeUser(async (id, done) => {
+  try {
+    const user = await User.findById(id);
+    done(null, user);
+  } catch (error) {
+    done(error, null);
+  }
+});
+
+// @desc    Google auth route
+// @route   GET /api/auth/google
+// @access  Public
+exports.googleAuth = passport.authenticate('google', {
+  scope: ['profile', 'email'],
+});
+
+// @desc    Google auth callback
+// @route   GET /api/auth/google/callback
+// @access  Public
+exports.googleCallback = (req, res, next) => {
+  passport.authenticate('google', { session: false }, (err, user) => {
+    if (err) {
+      return res.redirect(`${process.env.FRONTEND_URL}/login?error=auth_failed`);
+    }
+
+    if (!user) {
+      return res.redirect(`${process.env.FRONTEND_URL}/login?error=user_not_found`);
+    }
+
+    // Generate JWT token
+    const token = generateToken(user._id);
+
+    // Redirect to frontend with token
+    res.redirect(`${process.env.FRONTEND_URL}/auth/callback?token=${token}`);
+  })(req, res, next);
+};
+
 // @desc    Register user
 // @route   POST /api/auth/register
 // @access  Public

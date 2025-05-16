@@ -8,6 +8,7 @@ const { getPagination, createPaginationMetadata } = require('../utils/helpers');
 // @route   GET /api/v1/exhibitions
 // @access  Public
 exports.getExhibitions = asyncHandler(async (req, res, next) => {
+  console.log("getExhibitions");
   const page = parseInt(req.query.page, 10) || 1;
   const limit = parseInt(req.query.limit, 10) || 10;
   const { skip } = getPagination(page, limit);
