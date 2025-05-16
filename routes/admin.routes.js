@@ -7,8 +7,13 @@ const { protect, authorize } = require('../middleware/auth');
 router.use(protect);
 router.use(authorize('admin'));
 
-// Dashboard routes
+// Dashboard & Analytics routes
 router.get('/stats', adminController.getStats);
+router.get('/analytics/revenue', adminController.getRevenueAnalytics);
+router.get('/analytics/attendance', adminController.getAttendanceStats);
+router.get('/analytics/users', adminController.getUserRegistrationStats);
+router.get('/analytics/events', adminController.getEventPerformanceStats);
+router.get('/analytics/geographic', adminController.getGeographicStats);
 
 // User management routes
 router.get('/users', adminController.getUsers);
@@ -30,4 +35,4 @@ router.get('/events/:eventId/tickets', adminController.getEventTickets);
 router.get('/settings', adminController.getSettings);
 router.put('/settings', adminController.updateSettings);
 
-module.exports = router; 
+module.exports = router;

@@ -37,24 +37,12 @@ exports.validateUserLogin = [
   body('password').notEmpty().withMessage('Password is required'),
 ];
 
-// Validation for creating exhibition
-exports.validateExhibition = [
-  body('name').notEmpty().withMessage('Exhibition name is required'),
-  body('description').notEmpty().withMessage('Description is required'),
-  body('startDate').isISO8601().withMessage('Valid start date is required'),
-  body('endDate').isISO8601().withMessage('Valid end date is required'),
-  body('venue.name').notEmpty().withMessage('Venue name is required'),
-  body('venue.address').notEmpty().withMessage('Venue address is required'),
-  body('venue.city').notEmpty().withMessage('City is required'),
-  body('venue.state').notEmpty().withMessage('State is required'),
-  body('venue.pincode').notEmpty().withMessage('Pincode is required'),
-];
+
 
 // Validation for creating event
 exports.validateEvent = [
   body('name').notEmpty().withMessage('Event name is required'),
   body('description').notEmpty().withMessage('Description is required'),
-  body('exhibition').isMongoId().withMessage('Valid exhibition ID is required'),
   body('startTime').isISO8601().withMessage('Valid start time is required'),
   body('endTime').isISO8601().withMessage('Valid end time is required'),
   body('location').notEmpty().withMessage('Location is required'),
@@ -65,7 +53,6 @@ exports.validateEvent = [
 // Validation for creating ticket
 exports.validateTicket = [
   body('purchasedBy').isMongoId().withMessage('Valid user ID is required'),
-  body('exhibition').isMongoId().withMessage('Valid exhibition ID is required'),
   body('events').isArray().withMessage('Events must be an array'),
   body('events.*.event').isMongoId().withMessage('Valid event ID is required'),
   body('attendees').isArray().withMessage('Attendees must be an array'),

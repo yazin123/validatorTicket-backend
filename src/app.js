@@ -6,7 +6,6 @@ const errorHandler = require('./middleware/error')
 const authRoutes = require('./routes/auth')
 const userRoutes = require('./routes/users')
 const ticketRoutes = require('./routes/tickets')
-const exhibitionRoutes = require('./routes/exhibitions')
 
 const app = express()
 
@@ -36,7 +35,7 @@ if (process.env.NODE_ENV === 'development') {
 app.use('/api/auth', authRoutes)
 app.use('/api/users', userRoutes)
 app.use('/api/tickets', ticketRoutes)
-app.use('/api/exhibitions', exhibitionRoutes)
+
 
 // Error handling
 app.use(errorHandler)

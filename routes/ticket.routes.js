@@ -10,7 +10,8 @@ const {
   verifyEvent,
   addEvents,
   cancelTicket,
-  getTicketByQRCode
+  getTicketByQRCode,
+  updateStatusofTicket
 } = require('../controllers/ticket.controller');
 const { protect, authorize } = require('../middleware/auth');
 
@@ -30,6 +31,7 @@ router.post('/verify-qr', authorize('staff', 'admin'), getTicketByQRCode);
 // Admin only routes
 router.get('/', authorize('admin'), getTickets);
 router.get('/:id', getTicket);
+router.put('/:id/status', authorize('admin'), updateStatusofTicket);
 router.put('/:id/cancel', authorize('admin'), cancelTicket);
 
 module.exports = router;

@@ -56,15 +56,15 @@ class MailService {
   async sendWelcomeEmail(user) {
     return this.sendEmail({
       to: user.email,
-      subject: 'Welcome to Exhibition Ticket System',
-      text: `Welcome to Exhibition Ticket System, ${user.name}!`,
+      subject: 'Welcome to Science City',
+      text: `Welcome to Science City, ${user.name}!`,
       html: `
         <div style="max-width: 600px; margin: 0 auto; padding: 20px; font-family: Arial, sans-serif;">
-          <h2>Welcome to Exhibition Ticket System!</h2>
+          <h2>Welcome to Science City!</h2>
           <p>Hello ${user.name},</p>
-          <p>Thank you for registering with our Exhibition Ticket System. We're excited to have you on board!</p>
-          <p>You can now book tickets for exciting exhibitions and events.</p>
-          <p>Best regards,<br>Exhibition Ticket System Team</p>
+          <p>Thank you for registering with us. We're excited to have you on board!</p>
+          <p>You can now book tickets for exciting events.</p>
+          <p>Best regards,<br>Science City Team</p>
         </div>
       `,
     });
@@ -101,12 +101,13 @@ class MailService {
           </ul>
           <p><strong>Ticket Number:</strong> ${ticket.ticketNumber}</p>
           <p><strong>Total Amount:</strong> ₹${ticket.totalAmount}</p>
+          <p><strong>Total Heads:</strong> ${ticket.attendees.length}</p>
           <div style="text-align: center; margin: 20px 0;">
             <img src="${qrCodeUrl}" alt="Ticket QR Code" style="max-width: 200px;">
             <p><strong>Please present this QR code at the venue entrance</strong></p>
           </div>
           <p>Thank you for your purchase. We look forward to seeing you at the event!</p>
-          <p>Best regards,<br>Exhibition Ticket System Team</p>
+          <p>Best regards,<br>Science City Team</p>
         </div>
       `,
     });

@@ -5,7 +5,6 @@ const router = express.Router();
 // Import all route modules
 const authRoutes = require('./auth.routes');
 const userRoutes = require('./user.routes');
-const exhibitionRoutes = require('./exhibition.routes');
 const eventRoutes = require('./event.routes');
 const ticketRoutes = require('./ticket.routes');
 const paymentRoutes = require('./payment.routes');
@@ -16,7 +15,6 @@ const adminRoutes = require('./admin.routes');
 router.use('/auth', authRoutes);
 router.use('/admin', adminRoutes);
 router.use('/users', userRoutes);
-router.use('/exhibitions', exhibitionRoutes);
 router.use('/events', eventRoutes);
 router.use('/tickets', ticketRoutes);
 router.use('/payments', paymentRoutes);

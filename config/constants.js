@@ -15,14 +15,7 @@ module.exports = {
       CANCELLED: 'cancelled'
     },
     
-    // Exhibition status options
-    EXHIBITION_STATUS: {
-      PLANNING: 'planning',
-      ANNOUNCED: 'announced',
-      ACTIVE: 'active',
-      COMPLETED: 'completed',
-      CANCELLED: 'cancelled'
-    },
+
     
     // Ticket status options
     TICKET_STATUS: {

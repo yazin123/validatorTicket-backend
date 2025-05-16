@@ -39,11 +39,6 @@ const ticketSchema = new mongoose.Schema({
     ref: 'User',
     required: [true, 'Staff reference is required'],
   },
-  exhibition: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Exhibition',
-    required: [true, 'Exhibition reference is required'],
-  },
   events: [{
     event: {
       type: mongoose.Schema.Types.ObjectId,

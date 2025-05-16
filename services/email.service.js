@@ -14,12 +14,12 @@ class EmailService {
       });
 
       const mailOptions = {
-        from: `"Exhibition Tickets" <${process.env.SMTP_EMAIL}>`,
+        from: `"Event Tickets" <${process.env.SMTP_EMAIL}>`,
         to: userEmail,
-        subject: 'Your Exhibition Ticket',
+        subject: 'Your Event Ticket',
         html: `
-          <h1>Your Exhibition Ticket</h1>
-          <p>Thank you for purchasing a ticket for ${ticketData.exhibition.name}.</p>
+          <h1>Your Event Ticket</h1>
+          <p>Thank you for purchasing a ticket for ${ticketData.event.name}.</p>
           <p>Ticket Number: ${ticketData.ticketNumber}</p>
           <p>Events:</p>
           <ul>
@@ -55,20 +55,19 @@ class EmailService {
       });
 
       const mailOptions = {
-        from: `"Exhibition Tickets" <${process.env.SMTP_EMAIL}>`,
+        from: `"Science City" <${process.env.SMTP_EMAIL}>`,
         to: userEmail,
-        subject: 'Welcome to Exhibition Tickets',
+        subject: 'Welcome to Science City',
         html: `
-          <h1>Welcome to Exhibition Tickets!</h1>
+          <h1>Welcome to Science City!</h1>
           <p>Hello ${userData.name},</p>
-          <p>Thank you for registering with Exhibition Tickets. You can now:</p>
+          <p>Thank you for registering with Science City. You can now:</p>
           <ul>
-            <li>Browse upcoming exhibitions and events</li>
+            <li>Browse upcoming Events and events</li>
             <li>Purchase tickets for events</li>
             <li>View your ticket history</li>
-            <li>Rate events you've attended</li>
           </ul>
-          <p>We look forward to seeing you at our exhibitions!</p>
+          <p>We look forward to seeing you at our Events!</p>
         `,
       };
 

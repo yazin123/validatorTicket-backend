@@ -24,10 +24,6 @@ exports.getTickets = asyncHandler(async (req, res, next) => {
   // Build filter
   const filter = {};
   
-  // Filter by exhibition
-  if (req.query.exhibition) {
-    filter.exhibition = req.query.exhibition;
-  }
   
   // Filter by payment status
   if (req.query.paymentStatus) {
@@ -73,7 +69,6 @@ exports.getMyTickets = asyncHandler(async (req, res, next) => {
   
   const total = await Ticket.countDocuments(filter);
   const tickets = await Ticket.find(filter)
-    .populate('exhibition', 'name venue')
     .populate('events.event', 'name startTime endTime location')
     .skip(skip)
     .limit(limit)
@@ -93,7 +88,7 @@ exports.getTicket = asyncHandler(async (req, res, next) => {
   const ticket = await Ticket.findById(req.params.id)
     .populate('purchasedBy', 'name email phoneNumber')
     .populate('issuedBy', 'name')
-    .populate('exhibition', 'name venue')
+    
     .populate('events.event', 'name startTime endTime location')
     .populate('events.verifiedBy', 'name');
 
@@ -127,7 +122,6 @@ exports.createTicket = async (req, res, next) => {
     const ticket = await Ticket.create({
       purchasedBy: req.user.id,
       issuedBy: req.user.id,
-      exhibition: events[0].event.exhibition, // Assuming all events are from the same exhibition
       events: events.map(event => ({
         event: event.event._id,
         verified: false,
@@ -176,7 +170,6 @@ exports.verifyTicket = asyncHandler(async (req, res, next) => {
     // Populate additional fields for complete ticket details
     await ticket.populate([
       { path: 'purchasedBy', select: 'name email phoneNumber' },
-      { path: 'exhibition', select: 'name venue description' },
       { path: 'events.event', select: 'name startTime endTime location description' }
     ]);
 
@@ -188,7 +181,6 @@ exports.verifyTicket = asyncHandler(async (req, res, next) => {
         ticketNumber: ticket.ticketNumber,
         status: ticket.status,
         paymentStatus: ticket.paymentStatus,
-        exhibition: ticket.exhibition,
         purchasedBy: ticket.purchasedBy,
         events: ticket.events,
         attendees: ticket.attendees,
@@ -332,6 +324,21 @@ exports.cancelTicket = asyncHandler(async (req, res, next) => {
     data: ticket,
   });
 });
+exports.updateStatusofTicket = asyncHandler(async (req, res, next) => {
+  const ticket = await Ticket.findById(req.params.id);
+
+  if (!ticket) {
+    return next(new ErrorResponse(`Ticket not found with id of ${req.params.id}`, 404));
+  }
+  
+  ticket.status = req.body.status;
+  await ticket.save();
+
+  res.status(200).json({
+    success: true,
+    data: ticket,
+  });
+});
 
 // @desc    Get ticket by QR code
 // @route   POST /api/v1/tickets/verify-qr
@@ -345,7 +352,7 @@ exports.getTicketByQRCode = asyncHandler(async (req, res, next) => {
   
   const ticket = await Ticket.findOne({ qrCode })
     .populate('purchasedBy', 'name email phoneNumber')
-    .populate('exhibition', 'name venue')
+    
     .populate('events.event', 'name startTime endTime location')
     .populate('events.verifiedBy', 'name');
   

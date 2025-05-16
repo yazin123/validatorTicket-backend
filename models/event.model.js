@@ -14,47 +14,23 @@ const eventSchema = new mongoose.Schema({
     trim: true,
     maxlength: [2000, 'Description cannot be more than 2000 characters']
   },
-  date: {
+
+  startDate: {
     type: Date,
-    required: [true, 'Please add a date']
-  },
-  startTime: {
-    type: String,
     required: [true, 'Please add a start time']
   },
-  endTime: {
-    type: String,
+  endDate: {
+    type: Date,
     required: [true, 'Please add an end time']
   },
-  location: {
-    venue: {
-      type: String,
-      required: [true, 'Please add a venue']
-    },
-    address: {
-      street: String,
-      city: String,
-      state: String,
-      zipCode: String,
-      country: String
-    },
-    coordinates: {
-      latitude: Number,
-      longitude: Number
-    }
+  venue: {
+    type: String,
+    required: [true, 'Please add a venue']
   },
   category: {
-    type: String,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Category',
     required: [true, 'Please add a category'],
-    enum: [
-      'concert',
-      'conference',
-      'exhibition',
-      'festival',
-      'sports',
-      'theater',
-      'other'
-    ]
   },
   price: {
     type: Number,
@@ -66,10 +42,7 @@ const eventSchema = new mongoose.Schema({
     required: [true, 'Please add a capacity'],
     min: [1, 'Capacity must be at least 1']
   },
-  ticketsSold: {
-    type: Number,
-    default: 0
-  },
+
   status: {
     type: String,
     enum: ['draft', 'published', 'cancelled', 'completed'],
@@ -92,11 +65,7 @@ const eventSchema = new mongoose.Schema({
     trim: true,
     maxlength: [1000, 'Terms cannot be more than 1000 characters']
   },
-  refundPolicy: {
-    type: String,
-    trim: true,
-    maxlength: [1000, 'Refund policy cannot be more than 1000 characters']
-  },
+
   createdAt: {
     type: Date,
     default: Date.now
@@ -120,22 +89,22 @@ eventSchema.virtual('tickets', {
 });
 
 // Check if event is sold out
-eventSchema.virtual('isSoldOut').get(function() {
+eventSchema.virtual('isSoldOut').get(function () {
   return this.ticketsSold >= this.capacity;
 });
 
 // Check if event is upcoming
-eventSchema.virtual('isUpcoming').get(function() {
+eventSchema.virtual('isUpcoming').get(function () {
   return this.date > new Date() && this.status === 'published';
 });
 
 // Check if event is past
-eventSchema.virtual('isPast').get(function() {
+eventSchema.virtual('isPast').get(function () {
   return this.date < new Date();
 });
 
 // Check if event is active
-eventSchema.virtual('isActive').get(function() {
+eventSchema.virtual('isActive').get(function () {
   if (!this.startTime || !this.endTime || !this.date) return false;
 
   const now = new Date();
@@ -154,12 +123,12 @@ eventSchema.virtual('isActive').get(function() {
 });
 
 // Update ticketsSold when tickets are created/deleted
-eventSchema.methods.updateTicketsSold = async function() {
+eventSchema.methods.updateTicketsSold = async function () {
   const ticketsSold = await this.model('Ticket').countDocuments({
     event: this._id,
     status: 'valid'
   });
-  
+
   this.ticketsSold = ticketsSold;
   await this.save();
 };

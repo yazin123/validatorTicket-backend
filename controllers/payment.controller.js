@@ -58,7 +58,7 @@ exports.getPayments = asyncHandler(async (req, res, next) => {
   const total = await Payment.countDocuments(filter);
   const payments = await Payment.find(filter)
     .populate('user', 'name email')
-    .populate('ticket', 'ticketNumber exhibition events')
+    .populate('ticket', 'ticketNumber events')
     .skip(skip)
     .limit(limit)
     .sort('-transactionDate');
@@ -87,7 +87,7 @@ exports.getMyPayments = asyncHandler(async (req, res, next) => {
   
   const total = await Payment.countDocuments(filter);
   const payments = await Payment.find(filter)
-    .populate('ticket', 'ticketNumber exhibition events totalAmount')
+    .populate('ticket', 'ticketNumber events totalAmount')
     .skip(skip)
     .limit(limit)
     .sort('-transactionDate');
@@ -104,7 +104,7 @@ exports.getMyPayments = asyncHandler(async (req, res, next) => {
 // @access  Private
 exports.createOrder = asyncHandler(async (req, res, next) => {
   try {
-    const { events, attendees, totalAmount, exhibitionId } = req.body;
+    const { events, attendees, totalAmount } = req.body;
 
     // Validate required fields
     if (!events || !Array.isArray(events) || events.length === 0) {
@@ -117,10 +117,6 @@ exports.createOrder = asyncHandler(async (req, res, next) => {
 
     if (!totalAmount || typeof totalAmount !== 'number' || totalAmount <= 0) {
       return next(new ErrorResponse('Please provide a valid total amount', 400));
-    }
-
-    if (!exhibitionId) {
-      return next(new ErrorResponse('Exhibition ID is required', 400));
     }
 
     // Validate each event
@@ -154,7 +150,6 @@ exports.createOrder = asyncHandler(async (req, res, next) => {
       user: req.user.id,
       purchasedBy: req.user.id,
       issuedBy: req.user.id, // For now, using the same user as issuer
-      exhibition: exhibitionId,
       events: events.map(event => ({
         event: event.event,
         quantity: event.quantity

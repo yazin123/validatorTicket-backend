@@ -1,21 +1,9 @@
 // routes/event.routes.js
 const express = require('express');
 const router = express.Router({ mergeParams: true });
-const { 
-  getEvents, 
-  getEvent, 
-  createEvent, 
-  updateEvent, 
-  deleteEvent 
-} = require('../controllers/event.controller');
-const { 
-  protect, 
-  authorize 
-} = require('../middleware/auth.middleware');
-const { 
-  validateEvent, 
-  validateRequest 
-} = require('../middleware/validation.middleware');
+const { getEvents, getEvent, createEvent, updateEvent, deleteEvent } = require('../controllers/event.controller');
+const { protect, authorize } = require('../middleware/auth.middleware');
+const { validateEvent, validateRequest } = require('../middleware/validation.middleware');
 
 // Include rating routes
 const ratingRouter = require('./rating.routes');
