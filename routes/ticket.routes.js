@@ -11,7 +11,8 @@ const {
   addEvents,
   cancelTicket,
   getTicketByQRCode,
-  updateStatusofTicket
+  updateStatusofTicket,
+  markEventAttended
 } = require('../controllers/ticket.controller');
 const { protect, authorize } = require('../middleware/auth');
 
@@ -20,13 +21,16 @@ router.use(protect);
 
 // User routes
 router.get('/my-tickets', getMyTickets);
+router.get('/me', getMyTickets);
 router.post('/', createTicket);
+router.post('/book', createTicket);
 router.put('/:id/events', addEvents);
 
 // Staff/Admin routes
 router.post('/verify', authorize('staff', 'admin'), verifyTicket);
 router.post('/verify-event', authorize('staff', 'admin'), verifyEvent);
 router.post('/verify-qr', authorize('staff', 'admin'), getTicketByQRCode);
+router.post('/mark-attended', authorize('staff', 'admin'), markEventAttended);
 
 // Admin only routes
 router.get('/', authorize('admin'), getTickets);

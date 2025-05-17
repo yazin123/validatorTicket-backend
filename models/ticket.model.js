@@ -24,11 +24,6 @@ const ticketSchema = new mongoose.Schema({
     required: [true, 'Ticket number is required'],
     unique: true,
   },
-  qrCode: {
-    type: String,
-    required: [true, 'QR code is required'],
-    unique: true,
-  },
   purchasedBy: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
@@ -45,9 +40,10 @@ const ticketSchema = new mongoose.Schema({
       ref: 'Event',
       required: [true, 'Event reference is required'],
     },
-    verified: {
-      type: Boolean,
-      default: false,
+    status: {
+      type: String,
+      enum: ['registered', 'attended'],
+      default: 'registered',
     },
     verifiedAt: {
       type: Date,
@@ -89,7 +85,7 @@ const ticketSchema = new mongoose.Schema({
   },
 });
 
-// Generate unique ticket number and QR code before save
+// Generate unique ticket number before save
 ticketSchema.pre('save', function(next) {
   if (!this.isNew) {
     return next();
@@ -99,9 +95,6 @@ ticketSchema.pre('save', function(next) {
   const timestamp = Date.now().toString();
   const randomStr = crypto.randomBytes(3).toString('hex');
   this.ticketNumber = `TIX-${timestamp.substring(timestamp.length - 6)}-${randomStr.toUpperCase()}`;
-  
-  // Generate unique QR code value
-  this.qrCode = crypto.randomBytes(20).toString('hex');
   
   next();
 });

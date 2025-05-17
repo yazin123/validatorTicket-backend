@@ -15,7 +15,7 @@ exports.getEvents = asyncHandler(async (req, res, next) => {
 
   let query;
 
-  query = Event.find().populate('category', 'title');
+  query = Event.find();
 
 
   // Add filters
@@ -44,8 +44,7 @@ exports.getEvents = asyncHandler(async (req, res, next) => {
 // @access  Public
 exports.getEvent = asyncHandler(async (req, res, next) => {
   const event = await Event.findById(req.params.id)
-    .populate('category', 'title')
-    .populate('ratings', 'rating comment user');
+    
 
   if (!event) {
     return next(new ErrorResponse('Event not found', 404));

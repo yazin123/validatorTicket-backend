@@ -27,11 +27,6 @@ const eventSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Please add a venue']
   },
-  category: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Category',
-    required: [true, 'Please add a category'],
-  },
   price: {
     type: Number,
     required: [true, 'Please add a price'],
@@ -58,6 +53,10 @@ const eventSchema = new mongoose.Schema({
     ref: 'User',
     required: true
   },
+  staffAssigned: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  }],
   tags: [String],
   features: [String],
   terms: {

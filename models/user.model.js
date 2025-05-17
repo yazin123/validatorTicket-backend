@@ -20,6 +20,10 @@ const userSchema = new mongoose.Schema({
       'Please add a valid email'
     ]
   },
+  qrCode: {
+    type: String,
+    unique: true,
+  },
   password: {
     type: String,
     required: [true, 'Please add a password'],
@@ -83,6 +87,17 @@ userSchema.pre('save', async function(next) {
 
   const salt = await bcrypt.genSalt(10);
   this.password = await bcrypt.hash(this.password, salt);
+});
+
+// Generate unique QR code for new users
+userSchema.pre('save', function(next) {
+  // Only generate QR code if it doesn't exist and user is new
+  if (!this.qrCode && this.isNew) {
+    const crypto = require('crypto');
+    // Generate a unique QR code using user's ID and a random string
+    this.qrCode = `USER-${crypto.randomBytes(10).toString('hex')}`;
+  }
+  next();
 });
 
 // Sign JWT and return

@@ -125,3 +125,30 @@ exports.createInitialAdmin = async (req, res) => {
   }
 };
 
+// @desc    Get current user profile
+// @route   GET /api/v1/users/profile
+// @access  Private
+exports.getProfile = asyncHandler(async (req, res, next) => {
+  // User is already available in req.user from the auth middleware
+  const user = await User.findById(req.user.id);
+
+  if (!user) {
+    return next(new ErrorResponse('User not found', 404));
+  }
+
+  res.status(200).json({
+    success: true,
+    data: {
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      role: user.role,
+      phoneNumber: user.phoneNumber,
+      qrCode: user.qrCode,
+      status: user.status,
+      createdAt: user.createdAt,
+      updatedAt: user.updatedAt
+    }
+  });
+});
+

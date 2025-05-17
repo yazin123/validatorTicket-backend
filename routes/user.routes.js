@@ -7,7 +7,8 @@ const {
   createUser, 
   updateUser, 
   deleteUser,
-  createInitialAdmin
+  createInitialAdmin,
+  getProfile
 } = require('../controllers/user.controller');
 const { 
   protect, 
@@ -20,6 +21,9 @@ const {
 
 // Special route for creating initial admin (no auth required)
 router.post('/setup-admin', validateUserRegistration, validateRequest, createInitialAdmin);
+
+// Profile route - any authenticated user can access their own profile
+router.get('/profile', protect, getProfile);
 
 // All other routes are protected and require admin access
 router.use(protect);
