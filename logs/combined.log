@@ -1535,3 +1535,36 @@
 {"level":"info","message":"Server running in development mode on port 5000","timestamp":"2025-05-19T09:20:21.418Z"}
 {"level":"info","message":"MongoDB Connected: ac-9tokwyt-shard-00-00.rl7d1qp.mongodb.net","timestamp":"2025-05-19T09:20:22.075Z"}
 {"level":"info","message":"MongoDB Connected...","timestamp":"2025-05-19T09:20:22.076Z"}
+{"level":"info","message":"Server running in development mode on port 5000","timestamp":"2025-05-19T09:36:03.107Z"}
+{"level":"info","message":"MongoDB Connected: ac-9tokwyt-shard-00-00.rl7d1qp.mongodb.net","timestamp":"2025-05-19T09:36:03.716Z"}
+{"level":"info","message":"MongoDB Connected...","timestamp":"2025-05-19T09:36:03.717Z"}
+{"level":"info","message":"Server running in development mode on port 5000","timestamp":"2025-05-19T09:36:30.032Z"}
+{"level":"info","message":"MongoDB Connected: ac-9tokwyt-shard-00-02.rl7d1qp.mongodb.net","timestamp":"2025-05-19T09:36:30.576Z"}
+{"level":"info","message":"MongoDB Connected...","timestamp":"2025-05-19T09:36:30.577Z"}
+{"eventId":"682aeee1dd0a673962d3a473","isDataUrl":false,"level":"info","message":"Verifying ticket with data","qrDataType":"string","timestamp":"2025-05-19T09:46:47.579Z"}
+{"level":"info","message":"Found 2 tickets for event 682aeee1dd0a673962d3a473","timestamp":"2025-05-19T09:46:47.693Z"}
+{"eventId":"682aeee1dd0a673962d3a473","level":"info","message":"Extracted pipe-delimited parts:","scanEventId":"682acaa2e610e2871cf59e14","scanShowId":"SHOW-1747634827592-fsCgkS","scanUserId":"68285879b217a78d6e37459e","timestamp":"2025-05-19T09:46:47.695Z"}
+{"found":false,"level":"info","message":"Finding matching ticket by pipe parts in all tickets:","timestamp":"2025-05-19T09:46:47.699Z"}
+{"level":"info","message":"Trying last resort lookup for event:","timestamp":"2025-05-19T09:46:47.700Z"}
+{"found":false,"level":"info","message":"Event + userId lookup result:","timestamp":"2025-05-19T09:46:47.744Z"}
+{"level":"error","message":"No ticket found with the provided QR data","timestamp":"2025-05-19T09:46:47.746Z"}
+{"level":"error","message":"Error: Ticket not found with this QR code\n    at C:\\Users\\moham\\OneDrive\\Desktop\\validator\\backend\\controllers\\ticket.controller.js:313:19\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)","timestamp":"2025-05-19T09:46:47.750Z"}
+{"eventId":"682aeee1dd0a673962d3a473","isDataUrl":false,"level":"info","message":"Verifying ticket with data","qrDataType":"string","timestamp":"2025-05-19T09:47:10.780Z"}
+{"level":"info","message":"Found 2 tickets for event 682aeee1dd0a673962d3a473","timestamp":"2025-05-19T09:47:10.876Z"}
+{"eventId":"682aeee1dd0a673962d3a473","level":"info","message":"Extracted pipe-delimited parts:","scanEventId":"682aeee1dd0a673962d3a473","scanShowId":"SHOW-1747643910121--HS-er","scanUserId":"682aeda5dd0a673962d3a436","timestamp":"2025-05-19T09:47:10.876Z"}
+{"criteria":{"event":"682aeee1dd0a673962d3a473","purchasedBy":"682aeda5dd0a673962d3a436","showId":"SHOW-1747643910121--HS-er"},"found":true,"level":"info","message":"Pipe-delimited lookup result:","timestamp":"2025-05-19T09:47:10.966Z"}
+{"level":"info","message":"Found ticket","ticketId":"682aef6fdd0a673962d3a5b7","ticketNumber":"TIX-271497-B0666B","timestamp":"2025-05-19T09:47:10.967Z"}
+{"level":"error","message":"ValidationError: Ticket validation failed: status: `attended` is not a valid enum value for path `status`.\n    at Document.invalidate (C:\\Users\\moham\\OneDrive\\Desktop\\validator\\backend\\node_modules\\mongoose\\lib\\document.js:3219:32)\n    at C:\\Users\\moham\\OneDrive\\Desktop\\validator\\backend\\node_modules\\mongoose\\lib\\document.js:3012:17\n    at C:\\Users\\moham\\OneDrive\\Desktop\\validator\\backend\\node_modules\\mongoose\\lib\\schematype.js:1368:9\n    at process.processTicksAndRejections (node:internal/process/task_queues:85:11)","timestamp":"2025-05-19T09:47:29.808Z"}
+{"level":"info","message":"Server running in development mode on port 5000","timestamp":"2025-05-19T09:48:35.653Z"}
+{"level":"info","message":"MongoDB Connected: ac-9tokwyt-shard-00-02.rl7d1qp.mongodb.net","timestamp":"2025-05-19T09:48:36.320Z"}
+{"level":"info","message":"MongoDB Connected...","timestamp":"2025-05-19T09:48:36.321Z"}
+{"eventId":"682aeee1dd0a673962d3a473","level":"info","markedBy":"682aed87dd0a673962d3a428","message":"Ticket marked as attended","ticketId":"682aef6fdd0a673962d3a5b7","ticketNumber":"TIX-271497-B0666B","timestamp":"2025-05-19T09:49:00.119Z"}
+{"level":"info","message":"Server running in development mode on port 5000","timestamp":"2025-05-19T09:49:24.697Z"}
+{"level":"info","message":"MongoDB Connected: ac-9tokwyt-shard-00-02.rl7d1qp.mongodb.net","timestamp":"2025-05-19T09:49:25.286Z"}
+{"level":"info","message":"MongoDB Connected...","timestamp":"2025-05-19T09:49:25.287Z"}
+{"level":"info","message":"Server running in development mode on port 5000","timestamp":"2025-05-19T09:49:31.276Z"}
+{"level":"info","message":"MongoDB Connected: ac-9tokwyt-shard-00-02.rl7d1qp.mongodb.net","timestamp":"2025-05-19T09:49:31.856Z"}
+{"level":"info","message":"MongoDB Connected...","timestamp":"2025-05-19T09:49:31.858Z"}
+{"level":"info","message":"Server running in development mode on port 5000","timestamp":"2025-05-19T09:51:12.364Z"}
+{"level":"info","message":"MongoDB Connected: ac-9tokwyt-shard-00-02.rl7d1qp.mongodb.net","timestamp":"2025-05-19T09:51:12.977Z"}
+{"level":"info","message":"MongoDB Connected...","timestamp":"2025-05-19T09:51:12.978Z"}

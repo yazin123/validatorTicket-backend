@@ -88,7 +88,7 @@ exports.getMyTickets = asyncHandler(async (req, res, next) => {
   
   const total = await Ticket.countDocuments(filter);
   const tickets = await Ticket.find(filter)
-    .populate('event', 'name startTime endTime location')
+    .populate('event', 'title startDate endDate venue price')
     .skip(skip)
     .limit(limit)
     .sort('-purchaseDate');
@@ -651,13 +651,13 @@ exports.markEventAttended = asyncHandler(async (req, res, next) => {
   }
   
   // Set status to attended
-  ticket.status = 'attended';
+  ticket.status = 'used';
   ticket.verifiedAt = new Date();
   ticket.verifiedBy = req.user._id;
   
   await ticket.save();
   
-  logger.info('Ticket marked as attended', {
+  logger.info('Ticket marked as used', {
     ticketId: ticket._id,
     ticketNumber: ticket.ticketNumber,
     eventId: eventId,
@@ -667,7 +667,7 @@ exports.markEventAttended = asyncHandler(async (req, res, next) => {
   res.status(200).json({
     success: true,
     data: ticket,
-    message: 'Ticket successfully marked as attended'
+    message: 'Ticket successfully marked as used'
   });
 });
 
