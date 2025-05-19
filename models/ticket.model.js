@@ -34,25 +34,20 @@ const ticketSchema = new mongoose.Schema({
     ref: 'User',
     required: [true, 'Staff reference is required'],
   },
-  events: [{
     event: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Event',
       required: [true, 'Event reference is required'],
     },
-    status: {
-      type: String,
-      enum: ['registered', 'attended'],
-      default: 'registered',
+  showId: {
+    type: String,
+    required: [true, 'Show ID is required'],
     },
-    verifiedAt: {
-      type: Date,
-    },
-    verifiedBy: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
-    }
-  }],
+  headCount: {
+    type: Number,
+    required: [true, 'Head count is required'],
+    min: [1, 'Head count must be at least 1']
+  },
   attendees: [attendeeSchema],
   totalAmount: {
     type: Number,
@@ -74,6 +69,11 @@ const ticketSchema = new mongoose.Schema({
   purchaseDate: {
     type: Date,
     default: Date.now,
+  },
+  qrCode: {
+    type: String,
+    required: true,
+    unique: true,
   },
   createdAt: {
     type: Date,

@@ -65,6 +65,17 @@ const eventSchema = new mongoose.Schema({
     maxlength: [1000, 'Terms cannot be more than 1000 characters']
   },
 
+  // New: Shows/Sessions for the event
+  shows: [
+    {
+      showId: { type: String, required: true }, // Unique per show for reference
+      date: { type: Date, required: true },
+      startTime: { type: String, required: true }, // e.g. '09:00'
+      endTime: { type: String, required: true },   // e.g. '12:00'
+      seatsBooked: { type: Number, default: 0 },
+    }
+  ],
+
   createdAt: {
     type: Date,
     default: Date.now

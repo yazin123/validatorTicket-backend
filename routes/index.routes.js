@@ -10,6 +10,7 @@ const ticketRoutes = require('./ticket.routes');
 const paymentRoutes = require('./payment.routes');
 const ratingRoutes = require('./rating.routes');
 const adminRoutes = require('./admin.routes');
+const entryPassRoutes = require('./entrypass.routes');
 
 // Mount routers
 router.use('/auth', authRoutes);
@@ -19,6 +20,7 @@ router.use('/events', eventRoutes);
 router.use('/tickets', ticketRoutes);
 router.use('/payments', paymentRoutes);
 router.use('/ratings', ratingRoutes);
+router.use('/entrypass', entryPassRoutes);
 
 // Base route for API health check
 router.get('/health', (req, res) => {

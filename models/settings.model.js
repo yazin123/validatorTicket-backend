@@ -94,6 +94,11 @@ const settingsSchema = new mongoose.Schema({
   updatedAt: {
     type: Date,
     default: Date.now
+  },
+  // New: Default entry pass expiration (in days)
+  entryPassExpirationDays: {
+    type: Number,
+    default: 30 // Default to 30 days if not set
   }
 }, {
   timestamps: true

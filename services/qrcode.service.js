@@ -117,7 +117,7 @@ class QRCodeService {
       // Find the ticket in the database
       const ticket = await Ticket.findById(ticketId)
         .populate('purchasedBy', 'name email')
-        .populate('events.event', 'name startTime endTime location');
+        .populate('event', 'name startTime endTime location');
 
       if (!ticket) {
         throw new Error('Invalid ticket: Ticket not found');

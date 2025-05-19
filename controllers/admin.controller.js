@@ -67,19 +67,19 @@ exports.getStats = async (req, res) => {
       endDate = endOfDay(parseISO(customEndDate));
     } else {
       // Default time ranges
-      switch (timeRange) {
+    switch (timeRange) {
         case 'day':
           startDate = startOfDay(now);
           endDate = endOfDay(now);
           break;
-        case 'week':
-          startDate = startOfWeek(now);
-          endDate = endOfWeek(now);
-          break;
-        case 'year':
-          startDate = startOfYear(now);
-          endDate = endOfYear(now);
-          break;
+      case 'week':
+        startDate = startOfWeek(now);
+        endDate = endOfWeek(now);
+        break;
+      case 'year':
+        startDate = startOfYear(now);
+        endDate = endOfYear(now);
+        break;
         case 'last7days':
           startDate = startOfDay(subDays(now, 6));
           endDate = endOfDay(now);
@@ -96,9 +96,9 @@ exports.getStats = async (req, res) => {
           startDate = startOfDay(subMonths(now, 6));
           endDate = endOfDay(now);
           break;
-        default: // month
-          startDate = startOfMonth(now);
-          endDate = endOfMonth(now);
+      default: // month
+        startDate = startOfMonth(now);
+        endDate = endOfMonth(now);
       }
     }
 
@@ -305,10 +305,7 @@ exports.getStats = async (req, res) => {
 
       // Recent tickets
       Ticket.find()
-        .populate({
-          path: 'events.event',
-          select: 'title'
-        })
+        .populate('event')
         .populate({
           path: 'purchasedBy',
           select: 'name email'
@@ -582,7 +579,7 @@ exports.getUserTickets = async (req, res) => {
     const [total, tickets] = await Promise.all([
       Ticket.countDocuments({ user: req.params.userId }),
       Ticket.find({ user: req.params.userId })
-        .populate('event')
+      .populate('event')
         .sort('-createdAt')
         .skip(skip)
         .limit(limit)
@@ -610,13 +607,99 @@ exports.getEvents = async (req, res) => {
     const limit = parseInt(req.query.limit, 10) || 20;
     const skip = (page - 1) * limit;
 
+    // Get all events for analytics calculation
+    const allEvents = await Event.find();
+    
+    // Calculate event stats
+    const now = new Date();
+    const lastWeek = new Date(now);
+    lastWeek.setDate(lastWeek.getDate() - 7);
+    
+    const eventStats = {
+      published: allEvents.filter(e => e.status === 'published').length,
+      draft: allEvents.filter(e => e.status === 'draft').length,
+      cancelled: allEvents.filter(e => e.status === 'cancelled').length,
+      completed: allEvents.filter(e => e.status === 'completed').length,
+      
+      // Get tickets sold for analytics
+      totalTickets: 0,
+      ticketsLastWeek: 0,
+      ticketsChange: 0,
+      
+      // Calculate revenue
+      totalRevenue: 0,
+      revenueLastWeek: 0,
+      revenueChange: 0,
+      
+      // Sold out events
+      soldOut: 0,
+      soldOutLastWeek: 0,
+      soldOutChange: 0
+    };
+    
+    // Get all tickets in one query for better performance
+    const tickets = await Ticket.find({ 
+      status: { $in: ['valid', 'used'] },
+      event: { $in: allEvents.map(e => e._id) }
+    });
+    
+    // Get total tickets
+    eventStats.totalTickets = tickets.length;
+    
+    // Get tickets from last week
+    const ticketsLastWeek = tickets.filter(ticket => 
+      ticket.purchaseDate && new Date(ticket.purchaseDate) >= lastWeek
+    );
+    eventStats.ticketsLastWeek = ticketsLastWeek.length;
+    
+    // Calculate ticket change percentage
+    const previousWeekTickets = tickets.filter(ticket => 
+      ticket.purchaseDate && 
+      new Date(ticket.purchaseDate) >= new Date(lastWeek.getTime() - 7 * 24 * 60 * 60 * 1000) &&
+      new Date(ticket.purchaseDate) < lastWeek
+    ).length;
+    
+    eventStats.ticketsChange = previousWeekTickets === 0 
+      ? 100 
+      : Math.round((eventStats.ticketsLastWeek - previousWeekTickets) / previousWeekTickets * 100);
+      
+    // Calculate revenue
+    eventStats.totalRevenue = tickets.reduce((sum, ticket) => sum + (ticket.totalAmount || 0), 0);
+    eventStats.revenueLastWeek = ticketsLastWeek.reduce((sum, ticket) => sum + (ticket.totalAmount || 0), 0);
+    
+    // Calculate revenue change percentage
+    const previousWeekRevenue = tickets
+      .filter(ticket => 
+        ticket.purchaseDate && 
+        new Date(ticket.purchaseDate) >= new Date(lastWeek.getTime() - 7 * 24 * 60 * 60 * 1000) &&
+        new Date(ticket.purchaseDate) < lastWeek
+      )
+      .reduce((sum, ticket) => sum + (ticket.totalAmount || 0), 0);
+      
+    eventStats.revenueChange = previousWeekRevenue === 0 
+      ? 100 
+      : Math.round((eventStats.revenueLastWeek - previousWeekRevenue) / previousWeekRevenue * 100);
+    
+    // Calculate sold out events
+    const eventTicketCounts = {};
+    tickets.forEach(ticket => {
+      const eventId = ticket.event.toString();
+      eventTicketCounts[eventId] = (eventTicketCounts[eventId] || 0) + (ticket.headCount || 1);
+    });
+    
+    eventStats.soldOut = allEvents.filter(event => 
+      eventTicketCounts[event._id.toString()] >= event.capacity
+    ).length;
+    
+    // Get paginated events for response
     const [total, events] = await Promise.all([
       Event.countDocuments(),
-      Event.find().sort('-date').skip(skip).limit(limit)
+      Event.find().sort('-startDate').skip(skip).limit(limit)
     ]);
 
     res.json({
       events,
+      eventStats,
       pagination: {
         total,
         page,
@@ -626,7 +709,7 @@ exports.getEvents = async (req, res) => {
     });
   } catch (error) {
     console.error('Error fetching events:', error);
-    res.status(500).json({ message: 'Error fetching events' });
+    res.status(500).json({ message: 'Error fetching events', error: error.message });
   }
 };
 
@@ -634,11 +717,13 @@ exports.createEvent = async (req, res) => {
   try {
     // Parse fields from req.body
     const {
-      title, description, startDate, endDate, venue, price, capacity, status, tags, features, terms, staffAssigned
+      title, description, startDate, endDate, venue, price, capacity, status, tags, features, terms, staffAssigned, shows
     } = req.body;
+    
     if (!title || !description || !startDate || !endDate || !venue || !price || !capacity) {
       return res.status(400).json({ message: 'Missing required fields' });
     }
+    
     // Handle file uploads
     let image = undefined;
     let gallery = [];
@@ -648,15 +733,35 @@ exports.createEvent = async (req, res) => {
     if (req.files && req.files.gallery) {
       gallery = req.files.gallery.map(f => '/uploads/events/' + f.filename);
     }
+    
     // Parse tags/features as arrays
     const tagsArr = typeof tags === 'string' ? tags.split(',').map(s => s.trim()).filter(Boolean) : [];
     const featuresArr = typeof features === 'string' ? features.split(',').map(s => s.trim()).filter(Boolean) : [];
+    
     // Parse staffAssigned as array
     let staffArr = [];
     if (staffAssigned) {
       if (Array.isArray(staffAssigned)) staffArr = staffAssigned;
       else staffArr = [staffAssigned];
     }
+    
+    // Parse shows array from JSON string
+    let showsArr = [];
+    if (shows) {
+      try {
+        showsArr = typeof shows === 'string' ? JSON.parse(shows) : shows;
+        // Validate each show has required fields
+        showsArr.forEach(show => {
+          if (!show.showId || !show.date || !show.startTime || !show.endTime) {
+            throw new Error('Each show must have showId, date, startTime, and endTime');
+          }
+        });
+      } catch (error) {
+        console.error('Error parsing shows:', error);
+        return res.status(400).json({ message: 'Invalid shows data format' });
+      }
+    }
+    
     // Create event
     const event = await Event.create({
       title,
@@ -673,12 +778,14 @@ exports.createEvent = async (req, res) => {
       features: featuresArr,
       terms,
       staffAssigned: staffArr,
-      organizer: req.user._id
+      organizer: req.user._id,
+      shows: showsArr // Add shows array to event
     });
+    
     res.status(201).json(event);
   } catch (error) {
     console.error('Error creating event:', error);
-    res.status(500).json({ message: 'Error creating event' });
+    res.status(500).json({ message: 'Error creating event', error: error.message });
   }
 };
 
@@ -697,10 +804,38 @@ exports.getEventDetails = async (req, res) => {
 
 exports.updateEvent = async (req, res) => {
   try {
+    const { shows, tags, features } = req.body;
+    const updateData = { ...req.body };
+    
+    // Parse shows array from JSON string
+    if (shows) {
+      try {
+        updateData.shows = typeof shows === 'string' ? JSON.parse(shows) : shows;
+        // Validate each show has required fields
+        updateData.shows.forEach(show => {
+          if (!show.showId || !show.date || !show.startTime || !show.endTime) {
+            throw new Error('Each show must have showId, date, startTime, and endTime');
+          }
+        });
+      } catch (error) {
+        console.error('Error parsing shows:', error);
+        return res.status(400).json({ message: 'Invalid shows data format' });
+      }
+    }
+    
+    // Parse tags and features if they are strings
+    if (tags && typeof tags === 'string') {
+      updateData.tags = tags.split(',').map(s => s.trim()).filter(Boolean);
+    }
+    
+    if (features && typeof features === 'string') {
+      updateData.features = features.split(',').map(s => s.trim()).filter(Boolean);
+    }
+    
     const event = await Event.findByIdAndUpdate(
       req.params.eventId,
-      req.body,
-      { new: true }
+      updateData,
+      { new: true, runValidators: true }
     );
 
     if (!event) {
@@ -710,7 +845,7 @@ exports.updateEvent = async (req, res) => {
     res.json(event);
   } catch (error) {
     console.error('Error updating event:', error);
-    res.status(500).json({ message: 'Error updating event' });
+    res.status(500).json({ message: 'Error updating event', error: error.message });
   }
 };
 
@@ -757,7 +892,6 @@ exports.getEventTickets = async (req, res) => {
     const [total, tickets] = await Promise.all([
       Ticket.countDocuments({ event: req.params.eventId }),
       Ticket.find({ event: req.params.eventId })
-        .populate('user', 'name email')
         .sort('-createdAt')
         .skip(skip)
         .limit(limit)
@@ -824,48 +958,48 @@ exports.updateSettings = async (req, res) => {
 // @route   GET /api/v1/admin/analytics/attendance
 // @access  Private (Admin)
 exports.getAttendanceAnalytics = asyncHandler(async (req, res) => {
-  const {
-    timeRange = 'month',
-    startDate: customStartDate,
-    endDate: customEndDate
-  } = req.query;
+    const {
+      timeRange = 'month',
+      startDate: customStartDate,
+      endDate: customEndDate
+    } = req.query;
 
-  const now = new Date();
-  let startDate, endDate;
+    const now = new Date();
+    let startDate, endDate;
 
-  // Handle custom date range if provided
-  if (customStartDate && customEndDate) {
-    startDate = startOfDay(parseISO(customStartDate));
-    endDate = endOfDay(parseISO(customEndDate));
-  } else {
-    // Default time ranges
-    switch (timeRange) {
-      case 'week':
-        startDate = startOfWeek(now);
+    // Handle custom date range if provided
+    if (customStartDate && customEndDate) {
+      startDate = startOfDay(parseISO(customStartDate));
+      endDate = endOfDay(parseISO(customEndDate));
+    } else {
+      // Default time ranges
+      switch (timeRange) {
+        case 'week':
+          startDate = startOfWeek(now);
         endDate = now;
         break;
       case 'month':
         startDate = startOfMonth(now);
         endDate = now;
-        break;
-      case 'year':
-        startDate = startOfYear(now);
+          break;
+        case 'year':
+          startDate = startOfYear(now);
         endDate = now;
-        break;
-      case 'last7days':
+          break;
+        case 'last7days':
         startDate = subDays(now, 6);
         endDate = now;
-        break;
-      case 'last30days':
+          break;
+        case 'last30days':
         startDate = subDays(now, 29);
         endDate = now;
-        break;
-      case 'last3months':
+          break;
+        case 'last3months':
         startDate = subMonths(now, 3);
         endDate = now;
-        break;
+          break;
       default:
-        startDate = startOfMonth(now);
+          startDate = startOfMonth(now);
         endDate = now;
     }
   }
@@ -935,7 +1069,7 @@ exports.getAttendanceAnalytics = asyncHandler(async (req, res) => {
     res.status(200).json({
       success: true,
       timeRange,
-      startDate: format(startDate, 'yyyy-MM-dd'),
+        startDate: format(startDate, 'yyyy-MM-dd'),
       endDate: format(endDate, 'yyyy-MM-dd'),
       events: eventAttendanceData,
       dailyAttendance
