@@ -1568,3 +1568,185 @@
 {"level":"info","message":"Server running in development mode on port 5000","timestamp":"2025-05-19T09:51:12.364Z"}
 {"level":"info","message":"MongoDB Connected: ac-9tokwyt-shard-00-02.rl7d1qp.mongodb.net","timestamp":"2025-05-19T09:51:12.977Z"}
 {"level":"info","message":"MongoDB Connected...","timestamp":"2025-05-19T09:51:12.978Z"}
+{"level":"info","message":"Server running in development mode on port 5000","timestamp":"2025-05-21T05:24:41.212Z"}
+{"level":"info","message":"MongoDB Connected: ac-9tokwyt-shard-00-00.rl7d1qp.mongodb.net","timestamp":"2025-05-21T05:24:41.788Z"}
+{"level":"info","message":"MongoDB Connected...","timestamp":"2025-05-21T05:24:41.789Z"}
+{"level":"info","message":"Server running in development mode on port 5000","timestamp":"2025-05-21T05:51:46.744Z"}
+{"level":"info","message":"MongoDB Connected: ac-9tokwyt-shard-00-02.rl7d1qp.mongodb.net","timestamp":"2025-05-21T05:51:47.247Z"}
+{"level":"info","message":"MongoDB Connected...","timestamp":"2025-05-21T05:51:47.248Z"}
+{"eventId":"682aeee1dd0a673962d3a473","isDataUrl":false,"level":"info","message":"Verifying ticket with data","qrDataType":"string","timestamp":"2025-05-21T06:42:16.433Z"}
+{"eventId":"682aeee1dd0a673962d3a473","isDataUrl":false,"level":"info","message":"Verifying ticket with data","qrDataType":"string","timestamp":"2025-05-21T06:42:16.487Z"}
+{"level":"info","message":"Found 2 tickets for event 682aeee1dd0a673962d3a473","timestamp":"2025-05-21T06:42:16.551Z"}
+{"eventId":"682aeee1dd0a673962d3a473","level":"info","message":"Extracted pipe-delimited parts:","scanEventId":"682acaa2e610e2871cf59e14","scanShowId":"SHOW-1747634827592-fsCgkS","scanUserId":"68285879b217a78d6e37459e","timestamp":"2025-05-21T06:42:16.552Z"}
+{"found":false,"level":"info","message":"Finding matching ticket by pipe parts in all tickets:","timestamp":"2025-05-21T06:42:16.552Z"}
+{"level":"info","message":"Trying last resort lookup for event:","timestamp":"2025-05-21T06:42:16.552Z"}
+{"found":false,"level":"info","message":"Event + userId lookup result:","timestamp":"2025-05-21T06:42:16.592Z"}
+{"level":"error","message":"No ticket found with the provided QR data","timestamp":"2025-05-21T06:42:16.593Z"}
+{"level":"error","message":"Error: Ticket not found with this QR code\n    at /home/yazin/Desktop/code/sciencecity/validatorTicket-backend/controllers/ticket.controller.js:313:19\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)","timestamp":"2025-05-21T06:42:16.595Z"}
+{"level":"info","message":"Found 2 tickets for event 682aeee1dd0a673962d3a473","timestamp":"2025-05-21T06:42:16.601Z"}
+{"eventId":"682aeee1dd0a673962d3a473","level":"info","message":"Extracted pipe-delimited parts:","scanEventId":"682acaa2e610e2871cf59e14","scanShowId":"SHOW-1747634827592-fsCgkS","scanUserId":"68285879b217a78d6e37459e","timestamp":"2025-05-21T06:42:16.601Z"}
+{"found":false,"level":"info","message":"Finding matching ticket by pipe parts in all tickets:","timestamp":"2025-05-21T06:42:16.601Z"}
+{"level":"info","message":"Trying last resort lookup for event:","timestamp":"2025-05-21T06:42:16.602Z"}
+{"found":false,"level":"info","message":"Event + userId lookup result:","timestamp":"2025-05-21T06:42:16.638Z"}
+{"level":"error","message":"No ticket found with the provided QR data","timestamp":"2025-05-21T06:42:16.639Z"}
+{"level":"error","message":"Error: Ticket not found with this QR code\n    at /home/yazin/Desktop/code/sciencecity/validatorTicket-backend/controllers/ticket.controller.js:313:19\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)","timestamp":"2025-05-21T06:42:16.639Z"}
+{"eventId":"682aeee1dd0a673962d3a473","isDataUrl":false,"level":"info","message":"Verifying ticket with data","qrDataType":"string","timestamp":"2025-05-21T06:42:46.366Z"}
+{"eventId":"682aeee1dd0a673962d3a473","isDataUrl":false,"level":"info","message":"Verifying ticket with data","qrDataType":"string","timestamp":"2025-05-21T06:42:46.439Z"}
+{"level":"info","message":"Found 2 tickets for event 682aeee1dd0a673962d3a473","timestamp":"2025-05-21T06:42:46.441Z"}
+{"eventId":"682aeee1dd0a673962d3a473","level":"info","message":"Extracted pipe-delimited parts:","scanEventId":"682aeee1dd0a673962d3a473","scanShowId":"SHOW-1747643910121--HS-er","scanUserId":"682aeda5dd0a673962d3a436","timestamp":"2025-05-21T06:42:46.441Z"}
+{"level":"info","message":"Found 2 tickets for event 682aeee1dd0a673962d3a473","timestamp":"2025-05-21T06:42:46.516Z"}
+{"eventId":"682aeee1dd0a673962d3a473","level":"info","message":"Extracted pipe-delimited parts:","scanEventId":"682aeee1dd0a673962d3a473","scanShowId":"SHOW-1747643910121--HS-er","scanUserId":"682aeda5dd0a673962d3a436","timestamp":"2025-05-21T06:42:46.517Z"}
+{"criteria":{"event":"682aeee1dd0a673962d3a473","purchasedBy":"682aeda5dd0a673962d3a436","showId":"SHOW-1747643910121--HS-er"},"found":true,"level":"info","message":"Pipe-delimited lookup result:","timestamp":"2025-05-21T06:42:46.521Z"}
+{"level":"info","message":"Found ticket","ticketId":"682aef6fdd0a673962d3a5b7","ticketNumber":"TIX-271497-B0666B","timestamp":"2025-05-21T06:42:46.522Z"}
+{"criteria":{"event":"682aeee1dd0a673962d3a473","purchasedBy":"682aeda5dd0a673962d3a436","showId":"SHOW-1747643910121--HS-er"},"found":true,"level":"info","message":"Pipe-delimited lookup result:","timestamp":"2025-05-21T06:42:46.594Z"}
+{"level":"info","message":"Found ticket","ticketId":"682aef6fdd0a673962d3a5b7","ticketNumber":"TIX-271497-B0666B","timestamp":"2025-05-21T06:42:46.595Z"}
+{"eventId":"682aeee1dd0a673962d3a473","isDataUrl":false,"level":"info","message":"Verifying ticket with data","qrDataType":"string","timestamp":"2025-05-21T06:42:46.751Z"}
+{"level":"info","message":"Found 2 tickets for event 682aeee1dd0a673962d3a473","timestamp":"2025-05-21T06:42:46.830Z"}
+{"eventId":"682aeee1dd0a673962d3a473","level":"info","message":"Extracted pipe-delimited parts:","scanEventId":"682aeee1dd0a673962d3a473","scanShowId":"SHOW-1747643910121--HS-er","scanUserId":"682aeda5dd0a673962d3a436","timestamp":"2025-05-21T06:42:46.830Z"}
+{"criteria":{"event":"682aeee1dd0a673962d3a473","purchasedBy":"682aeda5dd0a673962d3a436","showId":"SHOW-1747643910121--HS-er"},"found":true,"level":"info","message":"Pipe-delimited lookup result:","timestamp":"2025-05-21T06:42:46.905Z"}
+{"level":"info","message":"Found ticket","ticketId":"682aef6fdd0a673962d3a5b7","ticketNumber":"TIX-271497-B0666B","timestamp":"2025-05-21T06:42:46.905Z"}
+{"eventId":"682aeee1dd0a673962d3a473","isDataUrl":false,"level":"info","message":"Verifying ticket with data","qrDataType":"string","timestamp":"2025-05-21T06:46:01.868Z"}
+{"level":"info","message":"Found 2 tickets for event 682aeee1dd0a673962d3a473","timestamp":"2025-05-21T06:46:01.946Z"}
+{"eventId":"682aeee1dd0a673962d3a473","level":"info","message":"Extracted pipe-delimited parts:","scanEventId":"682aeee1dd0a673962d3a473","scanShowId":"SHOW-1747643910121--HS-er","scanUserId":"682aeda5dd0a673962d3a436","timestamp":"2025-05-21T06:46:01.946Z"}
+{"criteria":{"event":"682aeee1dd0a673962d3a473","purchasedBy":"682aeda5dd0a673962d3a436","showId":"SHOW-1747643910121--HS-er"},"found":true,"level":"info","message":"Pipe-delimited lookup result:","timestamp":"2025-05-21T06:46:02.028Z"}
+{"level":"info","message":"Found ticket","ticketId":"682aef6fdd0a673962d3a5b7","ticketNumber":"TIX-271497-B0666B","timestamp":"2025-05-21T06:46:02.028Z"}
+{"eventId":"682aeee1dd0a673962d3a473","isDataUrl":false,"level":"info","message":"Verifying ticket with data","qrDataType":"string","timestamp":"2025-05-21T06:48:12.425Z"}
+{"eventId":"682aeee1dd0a673962d3a473","isDataUrl":false,"level":"info","message":"Verifying ticket with data","qrDataType":"string","timestamp":"2025-05-21T06:48:12.493Z"}
+{"level":"info","message":"Found 2 tickets for event 682aeee1dd0a673962d3a473","timestamp":"2025-05-21T06:48:12.504Z"}
+{"eventId":"682aeee1dd0a673962d3a473","level":"info","message":"Extracted pipe-delimited parts:","scanEventId":"682aeee1dd0a673962d3a473","scanShowId":"SHOW-1747643910121--HS-er","scanUserId":"682aeda5dd0a673962d3a436","timestamp":"2025-05-21T06:48:12.504Z"}
+{"level":"info","message":"Found 2 tickets for event 682aeee1dd0a673962d3a473","timestamp":"2025-05-21T06:48:12.578Z"}
+{"eventId":"682aeee1dd0a673962d3a473","level":"info","message":"Extracted pipe-delimited parts:","scanEventId":"682aeee1dd0a673962d3a473","scanShowId":"SHOW-1747643910121--HS-er","scanUserId":"682aeda5dd0a673962d3a436","timestamp":"2025-05-21T06:48:12.579Z"}
+{"criteria":{"event":"682aeee1dd0a673962d3a473","purchasedBy":"682aeda5dd0a673962d3a436","showId":"SHOW-1747643910121--HS-er"},"found":true,"level":"info","message":"Pipe-delimited lookup result:","timestamp":"2025-05-21T06:48:12.586Z"}
+{"level":"info","message":"Found ticket","ticketId":"682aef6fdd0a673962d3a5b7","ticketNumber":"TIX-271497-B0666B","timestamp":"2025-05-21T06:48:12.586Z"}
+{"eventId":"682aeee1dd0a673962d3a473","isDataUrl":false,"level":"info","message":"Verifying ticket with data","qrDataType":"string","timestamp":"2025-05-21T06:48:12.589Z"}
+{"criteria":{"event":"682aeee1dd0a673962d3a473","purchasedBy":"682aeda5dd0a673962d3a436","showId":"SHOW-1747643910121--HS-er"},"found":true,"level":"info","message":"Pipe-delimited lookup result:","timestamp":"2025-05-21T06:48:12.657Z"}
+{"level":"info","message":"Found ticket","ticketId":"682aef6fdd0a673962d3a5b7","ticketNumber":"TIX-271497-B0666B","timestamp":"2025-05-21T06:48:12.658Z"}
+{"level":"info","message":"Found 2 tickets for event 682aeee1dd0a673962d3a473","timestamp":"2025-05-21T06:48:12.670Z"}
+{"eventId":"682aeee1dd0a673962d3a473","level":"info","message":"Extracted pipe-delimited parts:","scanEventId":"682aeee1dd0a673962d3a473","scanShowId":"SHOW-1747643910121--HS-er","scanUserId":"682aeda5dd0a673962d3a436","timestamp":"2025-05-21T06:48:12.670Z"}
+{"eventId":"682aeee1dd0a673962d3a473","isDataUrl":false,"level":"info","message":"Verifying ticket with data","qrDataType":"string","timestamp":"2025-05-21T06:48:12.675Z"}
+{"criteria":{"event":"682aeee1dd0a673962d3a473","purchasedBy":"682aeda5dd0a673962d3a436","showId":"SHOW-1747643910121--HS-er"},"found":true,"level":"info","message":"Pipe-delimited lookup result:","timestamp":"2025-05-21T06:48:12.748Z"}
+{"level":"info","message":"Found ticket","ticketId":"682aef6fdd0a673962d3a5b7","ticketNumber":"TIX-271497-B0666B","timestamp":"2025-05-21T06:48:12.748Z"}
+{"level":"info","message":"Found 2 tickets for event 682aeee1dd0a673962d3a473","timestamp":"2025-05-21T06:48:12.997Z"}
+{"eventId":"682aeee1dd0a673962d3a473","level":"info","message":"Extracted pipe-delimited parts:","scanEventId":"682aeee1dd0a673962d3a473","scanShowId":"SHOW-1747643910121--HS-er","scanUserId":"682aeda5dd0a673962d3a436","timestamp":"2025-05-21T06:48:12.998Z"}
+{"criteria":{"event":"682aeee1dd0a673962d3a473","purchasedBy":"682aeda5dd0a673962d3a436","showId":"SHOW-1747643910121--HS-er"},"found":true,"level":"info","message":"Pipe-delimited lookup result:","timestamp":"2025-05-21T06:48:13.075Z"}
+{"level":"info","message":"Found ticket","ticketId":"682aef6fdd0a673962d3a5b7","ticketNumber":"TIX-271497-B0666B","timestamp":"2025-05-21T06:48:13.076Z"}
+{"eventId":"682aeee1dd0a673962d3a473","isDataUrl":false,"level":"info","message":"Verifying ticket with data","qrDataType":"string","timestamp":"2025-05-21T06:48:42.832Z"}
+{"level":"info","message":"Found 2 tickets for event 682aeee1dd0a673962d3a473","timestamp":"2025-05-21T06:48:42.909Z"}
+{"eventId":"682aeee1dd0a673962d3a473","level":"info","message":"Extracted pipe-delimited parts:","scanEventId":"682aeee1dd0a673962d3a473","scanShowId":"SHOW-1747643910121--HS-er","scanUserId":"682aeda5dd0a673962d3a436","timestamp":"2025-05-21T06:48:42.909Z"}
+{"eventId":"682aeee1dd0a673962d3a473","isDataUrl":false,"level":"info","message":"Verifying ticket with data","qrDataType":"string","timestamp":"2025-05-21T06:48:42.911Z"}
+{"criteria":{"event":"682aeee1dd0a673962d3a473","purchasedBy":"682aeda5dd0a673962d3a436","showId":"SHOW-1747643910121--HS-er"},"found":true,"level":"info","message":"Pipe-delimited lookup result:","timestamp":"2025-05-21T06:48:42.984Z"}
+{"level":"info","message":"Found ticket","ticketId":"682aef6fdd0a673962d3a5b7","ticketNumber":"TIX-271497-B0666B","timestamp":"2025-05-21T06:48:42.984Z"}
+{"level":"info","message":"Found 2 tickets for event 682aeee1dd0a673962d3a473","timestamp":"2025-05-21T06:48:42.986Z"}
+{"eventId":"682aeee1dd0a673962d3a473","level":"info","message":"Extracted pipe-delimited parts:","scanEventId":"682aeee1dd0a673962d3a473","scanShowId":"SHOW-1747643910121--HS-er","scanUserId":"682aeda5dd0a673962d3a436","timestamp":"2025-05-21T06:48:42.986Z"}
+{"criteria":{"event":"682aeee1dd0a673962d3a473","purchasedBy":"682aeda5dd0a673962d3a436","showId":"SHOW-1747643910121--HS-er"},"found":true,"level":"info","message":"Pipe-delimited lookup result:","timestamp":"2025-05-21T06:48:43.062Z"}
+{"level":"info","message":"Found ticket","ticketId":"682aef6fdd0a673962d3a5b7","ticketNumber":"TIX-271497-B0666B","timestamp":"2025-05-21T06:48:43.062Z"}
+{"eventId":"682aeee1dd0a673962d3a473","isDataUrl":false,"level":"info","message":"Verifying ticket with data","qrDataType":"string","timestamp":"2025-05-21T06:56:13.616Z"}
+{"level":"info","message":"Found 2 tickets for event 682aeee1dd0a673962d3a473","timestamp":"2025-05-21T06:56:13.696Z"}
+{"eventId":"682aeee1dd0a673962d3a473","level":"info","message":"Extracted pipe-delimited parts:","scanEventId":"682aeee1dd0a673962d3a473","scanShowId":"SHOW-1747643910121--HS-er","scanUserId":"682aeda5dd0a673962d3a436","timestamp":"2025-05-21T06:56:13.696Z"}
+{"eventId":"682aeee1dd0a673962d3a473","isDataUrl":false,"level":"info","message":"Verifying ticket with data","qrDataType":"string","timestamp":"2025-05-21T06:56:13.698Z"}
+{"level":"info","message":"Found 2 tickets for event 682aeee1dd0a673962d3a473","timestamp":"2025-05-21T06:56:13.777Z"}
+{"eventId":"682aeee1dd0a673962d3a473","level":"info","message":"Extracted pipe-delimited parts:","scanEventId":"682aeee1dd0a673962d3a473","scanShowId":"SHOW-1747643910121--HS-er","scanUserId":"682aeda5dd0a673962d3a436","timestamp":"2025-05-21T06:56:13.778Z"}
+{"criteria":{"event":"682aeee1dd0a673962d3a473","purchasedBy":"682aeda5dd0a673962d3a436","showId":"SHOW-1747643910121--HS-er"},"found":true,"level":"info","message":"Pipe-delimited lookup result:","timestamp":"2025-05-21T06:56:13.779Z"}
+{"level":"info","message":"Found ticket","ticketId":"682aef6fdd0a673962d3a5b7","ticketNumber":"TIX-271497-B0666B","timestamp":"2025-05-21T06:56:13.780Z"}
+{"criteria":{"event":"682aeee1dd0a673962d3a473","purchasedBy":"682aeda5dd0a673962d3a436","showId":"SHOW-1747643910121--HS-er"},"found":true,"level":"info","message":"Pipe-delimited lookup result:","timestamp":"2025-05-21T06:56:13.861Z"}
+{"level":"info","message":"Found ticket","ticketId":"682aef6fdd0a673962d3a5b7","ticketNumber":"TIX-271497-B0666B","timestamp":"2025-05-21T06:56:13.861Z"}
+{"eventId":"682aeee1dd0a673962d3a473","isDataUrl":false,"level":"info","message":"Verifying ticket with data","qrDataType":"string","timestamp":"2025-05-21T06:59:06.261Z"}
+{"level":"info","message":"Found 1 tickets for event 682aeee1dd0a673962d3a473","timestamp":"2025-05-21T06:59:06.337Z"}
+{"eventId":"682aeee1dd0a673962d3a473","level":"info","message":"Extracted pipe-delimited parts:","scanEventId":"682aeee1dd0a673962d3a473","scanShowId":"SHOW-1747643910121--HS-er","scanUserId":"682aeda5dd0a673962d3a436","timestamp":"2025-05-21T06:59:06.337Z"}
+{"criteria":{"event":"682aeee1dd0a673962d3a473","purchasedBy":"682aeda5dd0a673962d3a436","showId":"SHOW-1747643910121--HS-er"},"found":true,"level":"info","message":"Pipe-delimited lookup result:","timestamp":"2025-05-21T06:59:06.413Z"}
+{"level":"info","message":"Found ticket","ticketId":"682aef88dd0a673962d3a5cf","ticketNumber":"TIX-296625-8F7989","timestamp":"2025-05-21T06:59:06.413Z"}
+{"eventId":"682aeee1dd0a673962d3a473","isDataUrl":false,"level":"info","message":"Verifying ticket with data","qrDataType":"string","timestamp":"2025-05-21T06:59:06.538Z"}
+{"level":"info","message":"Found 1 tickets for event 682aeee1dd0a673962d3a473","timestamp":"2025-05-21T06:59:06.615Z"}
+{"eventId":"682aeee1dd0a673962d3a473","level":"info","message":"Extracted pipe-delimited parts:","scanEventId":"682aeee1dd0a673962d3a473","scanShowId":"SHOW-1747643910121--HS-er","scanUserId":"682aeda5dd0a673962d3a436","timestamp":"2025-05-21T06:59:06.616Z"}
+{"criteria":{"event":"682aeee1dd0a673962d3a473","purchasedBy":"682aeda5dd0a673962d3a436","showId":"SHOW-1747643910121--HS-er"},"found":true,"level":"info","message":"Pipe-delimited lookup result:","timestamp":"2025-05-21T06:59:06.693Z"}
+{"level":"info","message":"Found ticket","ticketId":"682aef88dd0a673962d3a5cf","ticketNumber":"TIX-296625-8F7989","timestamp":"2025-05-21T06:59:06.694Z"}
+{"eventId":"682aeee1dd0a673962d3a473","isDataUrl":false,"level":"info","message":"Verifying ticket with data","qrDataType":"string","timestamp":"2025-05-21T07:00:42.910Z"}
+{"level":"info","message":"Found 1 tickets for event 682aeee1dd0a673962d3a473","timestamp":"2025-05-21T07:00:42.986Z"}
+{"eventId":"682aeee1dd0a673962d3a473","level":"info","message":"Extracted pipe-delimited parts:","scanEventId":"682aeee1dd0a673962d3a473","scanShowId":"SHOW-1747643910121--HS-er","scanUserId":"682aeda5dd0a673962d3a436","timestamp":"2025-05-21T07:00:42.986Z"}
+{"criteria":{"event":"682aeee1dd0a673962d3a473","purchasedBy":"682aeda5dd0a673962d3a436","showId":"SHOW-1747643910121--HS-er"},"found":true,"level":"info","message":"Pipe-delimited lookup result:","timestamp":"2025-05-21T07:00:43.064Z"}
+{"level":"info","message":"Found ticket","ticketId":"682aef88dd0a673962d3a5cf","ticketNumber":"TIX-296625-8F7989","timestamp":"2025-05-21T07:00:43.064Z"}
+{"eventId":"682aeee1dd0a673962d3a473","isDataUrl":false,"level":"info","message":"Verifying ticket with data","qrDataType":"string","timestamp":"2025-05-21T07:01:28.266Z"}
+{"eventId":"682aeee1dd0a673962d3a473","isDataUrl":false,"level":"info","message":"Verifying ticket with data","qrDataType":"string","timestamp":"2025-05-21T07:01:28.337Z"}
+{"level":"info","message":"Found 1 tickets for event 682aeee1dd0a673962d3a473","timestamp":"2025-05-21T07:01:28.340Z"}
+{"eventId":"682aeee1dd0a673962d3a473","level":"info","message":"Extracted pipe-delimited parts:","scanEventId":"682aeee1dd0a673962d3a473","scanShowId":"SHOW-1747643910121--HS-er","scanUserId":"682aeda5dd0a673962d3a436","timestamp":"2025-05-21T07:01:28.341Z"}
+{"level":"info","message":"Found 1 tickets for event 682aeee1dd0a673962d3a473","timestamp":"2025-05-21T07:01:28.412Z"}
+{"eventId":"682aeee1dd0a673962d3a473","level":"info","message":"Extracted pipe-delimited parts:","scanEventId":"682aeee1dd0a673962d3a473","scanShowId":"SHOW-1747643910121--HS-er","scanUserId":"682aeda5dd0a673962d3a436","timestamp":"2025-05-21T07:01:28.412Z"}
+{"criteria":{"event":"682aeee1dd0a673962d3a473","purchasedBy":"682aeda5dd0a673962d3a436","showId":"SHOW-1747643910121--HS-er"},"found":true,"level":"info","message":"Pipe-delimited lookup result:","timestamp":"2025-05-21T07:01:28.416Z"}
+{"level":"info","message":"Found ticket","ticketId":"682aef88dd0a673962d3a5cf","ticketNumber":"TIX-296625-8F7989","timestamp":"2025-05-21T07:01:28.416Z"}
+{"criteria":{"event":"682aeee1dd0a673962d3a473","purchasedBy":"682aeda5dd0a673962d3a436","showId":"SHOW-1747643910121--HS-er"},"found":true,"level":"info","message":"Pipe-delimited lookup result:","timestamp":"2025-05-21T07:01:28.490Z"}
+{"level":"info","message":"Found ticket","ticketId":"682aef88dd0a673962d3a5cf","ticketNumber":"TIX-296625-8F7989","timestamp":"2025-05-21T07:01:28.490Z"}
+{"eventId":"682aeee1dd0a673962d3a473","isDataUrl":false,"level":"info","message":"Verifying ticket with data","qrDataType":"string","timestamp":"2025-05-21T07:02:38.200Z"}
+{"level":"info","message":"Found 1 tickets for event 682aeee1dd0a673962d3a473","timestamp":"2025-05-21T07:02:38.280Z"}
+{"eventId":"682aeee1dd0a673962d3a473","level":"info","message":"Extracted pipe-delimited parts:","scanEventId":"682aeee1dd0a673962d3a473","scanShowId":"SHOW-1747643910121--HS-er","scanUserId":"682aeda5dd0a673962d3a436","timestamp":"2025-05-21T07:02:38.280Z"}
+{"criteria":{"event":"682aeee1dd0a673962d3a473","purchasedBy":"682aeda5dd0a673962d3a436","showId":"SHOW-1747643910121--HS-er"},"found":true,"level":"info","message":"Pipe-delimited lookup result:","timestamp":"2025-05-21T07:02:38.363Z"}
+{"level":"info","message":"Found ticket","ticketId":"682aef88dd0a673962d3a5cf","ticketNumber":"TIX-296625-8F7989","timestamp":"2025-05-21T07:02:38.363Z"}
+{"eventId":"682aeee1dd0a673962d3a473","isDataUrl":false,"level":"info","message":"Verifying ticket with data","qrDataType":"string","timestamp":"2025-05-21T07:03:11.350Z"}
+{"eventId":"682aeee1dd0a673962d3a473","isDataUrl":false,"level":"info","message":"Verifying ticket with data","qrDataType":"string","timestamp":"2025-05-21T07:03:11.417Z"}
+{"level":"info","message":"Found 1 tickets for event 682aeee1dd0a673962d3a473","timestamp":"2025-05-21T07:03:11.426Z"}
+{"eventId":"682aeee1dd0a673962d3a473","level":"info","message":"Extracted pipe-delimited parts:","scanEventId":"682aeee1dd0a673962d3a473","scanShowId":"SHOW-1747643910121--HS-er","scanUserId":"682aeda5dd0a673962d3a436","timestamp":"2025-05-21T07:03:11.427Z"}
+{"level":"info","message":"Found 1 tickets for event 682aeee1dd0a673962d3a473","timestamp":"2025-05-21T07:03:11.495Z"}
+{"eventId":"682aeee1dd0a673962d3a473","level":"info","message":"Extracted pipe-delimited parts:","scanEventId":"682aeee1dd0a673962d3a473","scanShowId":"SHOW-1747643910121--HS-er","scanUserId":"682aeda5dd0a673962d3a436","timestamp":"2025-05-21T07:03:11.495Z"}
+{"criteria":{"event":"682aeee1dd0a673962d3a473","purchasedBy":"682aeda5dd0a673962d3a436","showId":"SHOW-1747643910121--HS-er"},"found":true,"level":"info","message":"Pipe-delimited lookup result:","timestamp":"2025-05-21T07:03:11.502Z"}
+{"level":"info","message":"Found ticket","ticketId":"682aef88dd0a673962d3a5cf","ticketNumber":"TIX-296625-8F7989","timestamp":"2025-05-21T07:03:11.502Z"}
+{"eventId":"682aeee1dd0a673962d3a473","isDataUrl":false,"level":"info","message":"Verifying ticket with data","qrDataType":"string","timestamp":"2025-05-21T07:03:11.504Z"}
+{"criteria":{"event":"682aeee1dd0a673962d3a473","purchasedBy":"682aeda5dd0a673962d3a436","showId":"SHOW-1747643910121--HS-er"},"found":true,"level":"info","message":"Pipe-delimited lookup result:","timestamp":"2025-05-21T07:03:11.569Z"}
+{"level":"info","message":"Found ticket","ticketId":"682aef88dd0a673962d3a5cf","ticketNumber":"TIX-296625-8F7989","timestamp":"2025-05-21T07:03:11.569Z"}
+{"level":"info","message":"Found 1 tickets for event 682aeee1dd0a673962d3a473","timestamp":"2025-05-21T07:03:11.577Z"}
+{"eventId":"682aeee1dd0a673962d3a473","level":"info","message":"Extracted pipe-delimited parts:","scanEventId":"682aeee1dd0a673962d3a473","scanShowId":"SHOW-1747643910121--HS-er","scanUserId":"682aeda5dd0a673962d3a436","timestamp":"2025-05-21T07:03:11.578Z"}
+{"criteria":{"event":"682aeee1dd0a673962d3a473","purchasedBy":"682aeda5dd0a673962d3a436","showId":"SHOW-1747643910121--HS-er"},"found":true,"level":"info","message":"Pipe-delimited lookup result:","timestamp":"2025-05-21T07:03:11.655Z"}
+{"level":"info","message":"Found ticket","ticketId":"682aef88dd0a673962d3a5cf","ticketNumber":"TIX-296625-8F7989","timestamp":"2025-05-21T07:03:11.655Z"}
+{"eventId":"682aeee1dd0a673962d3a473","isDataUrl":false,"level":"info","message":"Verifying ticket with data","qrDataType":"string","timestamp":"2025-05-21T07:12:22.132Z"}
+{"level":"info","message":"Found 1 tickets for event 682aeee1dd0a673962d3a473","timestamp":"2025-05-21T07:12:22.221Z"}
+{"found":true,"level":"info","message":"Ticket number lookup result:","timestamp":"2025-05-21T07:12:22.299Z"}
+{"level":"info","message":"Found ticket","ticketId":"682aef88dd0a673962d3a5cf","ticketNumber":"TIX-296625-8F7989","timestamp":"2025-05-21T07:12:22.300Z"}
+{"eventId":"682aeee1dd0a673962d3a473","isDataUrl":false,"level":"info","message":"Verifying ticket with data","qrDataType":"string","timestamp":"2025-05-21T07:12:35.495Z"}
+{"level":"info","message":"Found 1 tickets for event 682aeee1dd0a673962d3a473","timestamp":"2025-05-21T07:12:35.572Z"}
+{"found":false,"level":"info","message":"Ticket number lookup result:","timestamp":"2025-05-21T07:12:35.606Z"}
+{"level":"info","message":"Trying last resort lookup for event:","timestamp":"2025-05-21T07:12:35.607Z"}
+{"level":"error","message":"No ticket found with the provided QR data","timestamp":"2025-05-21T07:12:35.607Z"}
+{"level":"error","message":"Error: Ticket not found with this QR code\n    at /home/yazin/Desktop/code/sciencecity/validatorTicket-backend/controllers/ticket.controller.js:313:19\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)","timestamp":"2025-05-21T07:12:35.607Z"}
+{"eventId":"682aeee1dd0a673962d3a473","isDataUrl":false,"level":"info","message":"Verifying ticket with data","qrDataType":"string","timestamp":"2025-05-21T07:12:37.032Z"}
+{"level":"info","message":"Found 1 tickets for event 682aeee1dd0a673962d3a473","timestamp":"2025-05-21T07:12:37.106Z"}
+{"found":true,"level":"info","message":"Ticket number lookup result:","timestamp":"2025-05-21T07:12:37.179Z"}
+{"level":"info","message":"Found ticket","ticketId":"682aef88dd0a673962d3a5cf","ticketNumber":"TIX-296625-8F7989","timestamp":"2025-05-21T07:12:37.179Z"}
+{"eventId":"682aeee1dd0a673962d3a473","isDataUrl":false,"level":"info","message":"Verifying ticket with data","qrDataType":"string","timestamp":"2025-05-21T07:13:49.277Z"}
+{"level":"info","message":"Found 1 tickets for event 682aeee1dd0a673962d3a473","timestamp":"2025-05-21T07:13:49.355Z"}
+{"found":true,"level":"info","message":"Ticket number lookup result:","timestamp":"2025-05-21T07:13:49.433Z"}
+{"level":"info","message":"Found ticket","ticketId":"682aef88dd0a673962d3a5cf","ticketNumber":"TIX-296625-8F7989","timestamp":"2025-05-21T07:13:49.433Z"}
+{"eventId":"682aeee1dd0a673962d3a473","isDataUrl":false,"level":"info","message":"Verifying ticket with data","qrDataType":"string","timestamp":"2025-05-21T07:15:32.561Z"}
+{"level":"info","message":"Found 1 tickets for event 682aeee1dd0a673962d3a473","timestamp":"2025-05-21T07:15:32.652Z"}
+{"found":true,"level":"info","message":"Ticket number lookup result:","timestamp":"2025-05-21T07:15:32.763Z"}
+{"level":"info","message":"Found ticket","ticketId":"682aef88dd0a673962d3a5cf","ticketNumber":"TIX-296625-8F7989","timestamp":"2025-05-21T07:15:32.763Z"}
+{"eventId":"682aeee1dd0a673962d3a473","isDataUrl":false,"level":"info","message":"Verifying ticket with data","qrDataType":"string","timestamp":"2025-05-21T07:24:17.903Z"}
+{"level":"info","message":"Found 1 tickets for event 682aeee1dd0a673962d3a473","timestamp":"2025-05-21T07:24:17.980Z"}
+{"found":true,"level":"info","message":"Ticket number lookup result:","timestamp":"2025-05-21T07:24:18.053Z"}
+{"level":"info","message":"Found ticket","ticketId":"682aef88dd0a673962d3a5cf","ticketNumber":"TIX-296625-8F7989","timestamp":"2025-05-21T07:24:18.053Z"}
+{"eventId":"682aeee1dd0a673962d3a473","isDataUrl":false,"level":"info","message":"Verifying ticket with data","qrDataType":"string","timestamp":"2025-05-21T07:27:47.451Z"}
+{"level":"info","message":"Found 1 tickets for event 682aeee1dd0a673962d3a473","timestamp":"2025-05-21T07:27:47.526Z"}
+{"found":true,"level":"info","message":"Ticket number lookup result:","timestamp":"2025-05-21T07:27:47.603Z"}
+{"level":"info","message":"Found ticket","ticketId":"682aef88dd0a673962d3a5cf","ticketNumber":"TIX-296625-8F7989","timestamp":"2025-05-21T07:27:47.603Z"}
+{"level":"info","message":"Server running in development mode on port 5000","timestamp":"2025-05-21T07:31:36.070Z"}
+{"level":"info","message":"MongoDB Connected: ac-9tokwyt-shard-00-00.rl7d1qp.mongodb.net","timestamp":"2025-05-21T07:31:36.586Z"}
+{"level":"info","message":"MongoDB Connected...","timestamp":"2025-05-21T07:31:36.587Z"}
+{"eventId":"682aeee1dd0a673962d3a473","isDataUrl":false,"level":"info","message":"Verifying ticket with data","qrDataType":"string","timestamp":"2025-05-21T07:31:55.175Z"}
+{"level":"info","message":"Found 1 tickets for event 682aeee1dd0a673962d3a473","timestamp":"2025-05-21T07:31:55.261Z"}
+{"found":true,"level":"info","message":"Ticket number lookup result:","timestamp":"2025-05-21T07:31:55.343Z"}
+{"level":"info","message":"Found ticket","ticketId":"682aef88dd0a673962d3a5cf","ticketNumber":"TIX-296625-8F7989","timestamp":"2025-05-21T07:31:55.343Z"}
+{"level":"info","message":"Server running in development mode on port 5000","timestamp":"2025-05-21T07:32:14.052Z"}
+{"level":"info","message":"MongoDB Connected: ac-9tokwyt-shard-00-00.rl7d1qp.mongodb.net","timestamp":"2025-05-21T07:32:14.526Z"}
+{"level":"info","message":"MongoDB Connected...","timestamp":"2025-05-21T07:32:14.526Z"}
+{"level":"info","message":"Server running in development mode on port 5000","timestamp":"2025-05-21T07:32:17.981Z"}
+{"level":"info","message":"MongoDB Connected: ac-9tokwyt-shard-00-02.rl7d1qp.mongodb.net","timestamp":"2025-05-21T07:32:18.428Z"}
+{"level":"info","message":"MongoDB Connected...","timestamp":"2025-05-21T07:32:18.428Z"}
+{"level":"info","message":"Server running in development mode on port 5000","timestamp":"2025-05-21T07:32:22.588Z"}
+{"level":"info","message":"Server running in development mode on port 5000","timestamp":"2025-05-21T07:32:23.848Z"}
+{"level":"info","message":"MongoDB Connected: ac-9tokwyt-shard-00-00.rl7d1qp.mongodb.net","timestamp":"2025-05-21T07:32:24.283Z"}
+{"level":"info","message":"MongoDB Connected...","timestamp":"2025-05-21T07:32:24.283Z"}
+{"eventId":"682aeee1dd0a673962d3a473","isDataUrl":false,"level":"info","message":"Verifying ticket with data","qrDataType":"string","timestamp":"2025-05-21T07:32:50.760Z"}
+{"level":"info","message":"Found 1 tickets for event 682aeee1dd0a673962d3a473","timestamp":"2025-05-21T07:32:50.837Z"}
+{"found":true,"level":"info","message":"Ticket number lookup result:","timestamp":"2025-05-21T07:32:50.915Z"}
+{"level":"info","message":"Found ticket","ticketId":"682aef88dd0a673962d3a5cf","ticketNumber":"TIX-296625-8F7989","timestamp":"2025-05-21T07:32:50.915Z"}
+{"level":"info","message":"Server running in development mode on port 5000","timestamp":"2025-05-21T08:40:54.419Z"}
+{"level":"info","message":"Server running in development mode on port 5000","timestamp":"2025-05-21T08:40:56.408Z"}
+{"level":"info","message":"MongoDB Connected: ac-9tokwyt-shard-00-01.rl7d1qp.mongodb.net","timestamp":"2025-05-21T08:40:56.976Z"}
+{"level":"info","message":"MongoDB Connected...","timestamp":"2025-05-21T08:40:56.977Z"}

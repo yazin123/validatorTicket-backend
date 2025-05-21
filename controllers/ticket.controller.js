@@ -351,12 +351,14 @@ exports.verifyTicket = asyncHandler(async (req, res, next) => {
     // Format ticket for response
     const ticketData = {
       ticketId: ticket._id,
+      ticketnumber: ticket.ticketNumber,
       eventId: event._id,
       eventTitle: event.title,
       eventVenue: event.venue,
       startDate: event.startDate,
       endDate: event.endDate,
       status: ticket.status,
+      qrCode:ticket.qrCode,
       canVerify: canVerify,
       isEventActive: isEventActive,
       canBeMarkedAttended: canVerify && isEventActive && ticket.status === 'active'
@@ -527,8 +529,8 @@ exports.bookTicket = asyncHandler(async (req, res, next) => {
   });
 
   // 5. Update entry pass and event show
-  entryPass.headCount -= headCount;
-  await entryPass.save();
+  // entryPass.headCount -= headCount;
+  // await entryPass.save();
   show.seatsBooked += headCount;
   await event.save();
 
